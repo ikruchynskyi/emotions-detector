@@ -44,6 +44,37 @@ text='Your service is awfull':{'label': 'excitement', 'score': 0.692785203456878
 text='Thank you for helping, Ill recomend you to friends':{'label': 'gratitude', 'score': 0.9946815371513367}
 ```
 
+### Web server 
+
+Run webserver: python3 server.py HOST PORT
+
+```
+python3 server.py 127.0.0.1 8080
+```
+
+### API: 
+**POST /analyze**
+
+Request text example:
+```
+curl -sX POST 127.0.0.1:8080/analyze -d '{"text": "Some random text and sad"}' | json_pp
+{
+   "data" : "sadness",
+   "status" : "success"
+}
+
+```
+
+### Run with docker:
+
+Please see example assuming that port 8080 will be used on the host and container environment
+
+```
+docker run -dit --name emotions-detector -p 8080:8080 -v "$(pwd)"/detector:/detector emotion-image
+docker exec -it emotions-detector python3 server.py 127.0.0.1 8080
+
+curl -sX POST emotions-detecto:8080/analyze -d '{"text": "Some random text and sad"}'
+```
 
 Pipelines documentation:
 https://huggingface.co/transformers/v4.10.1/main_classes/pipelines.html
