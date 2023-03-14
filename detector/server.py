@@ -23,7 +23,7 @@ def process(data):
     data = json.loads(data.decode('utf-8'))
     # Extract the text from the JSON object and analyze its emotion
     text = data.get('text', '')
-    emotion = emotionAnalyzer.analyze(text)[0]['label']
+    emotion = emotionAnalyzer.analyze(text)
     result = {'status': 'success', 'data': emotion}
     return json.dumps(result).encode('utf-8')
 

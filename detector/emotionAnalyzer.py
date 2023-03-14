@@ -9,4 +9,9 @@ hf_logging.set_verbosity_error()
 
 emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
 def analyze(text):
-    return  emotion(text)
+    text = normalize(text)
+    return emotion(text)
+
+def normalize(text):
+    return "".join(ch for ch in text if ch.isalnum() or ch == " ")
+
