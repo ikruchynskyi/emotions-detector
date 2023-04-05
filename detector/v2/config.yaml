@@ -1,0 +1,9 @@
+report_file: 'report.csv'
+comments_file: 'comments.csv'
+domain: 'magento'
+negative_emotions:
+  - anger
+  - annoyance
+  - disgust
+  - disappointment
+  - negative
